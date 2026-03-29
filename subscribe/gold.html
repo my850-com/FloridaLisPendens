@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Subscription | Florida Lis Pendens</title>
+    <meta name="description" content="Premium Florida Lis Pendens data subscription with daily data and marketing letter generation service.">
+    <style>
+        :root {
+            --navy: #1a3a5c;
+            --forest: #2d5a3d;
+            --gold: #c9a227;
+            --cream: #f8f9fa;
+            --text: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { color: var(--navy); font-size: 1.75rem; }
+        .subtitle { color: var(--gold); font-weight: 700; margin-top: 0.5rem; font-size: 1.1rem; }
+        .form-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--navy); }
+        input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+        .btn { background: var(--gold); color: var(--navy); padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        .back-link { text-align: center; margin-top: 1.5rem; }
+        .back-link a { color: var(--forest); }
+        .premium { background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%); color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        .premium h3 { color: var(--gold); margin-bottom: 0.75rem; }
+        .premium ul { margin-left: 1.25rem; }
+        .premium li { margin-bottom: 0.5rem; }
+        .note { background: #fff3cd; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.9rem; color: #856404; }
+        footer { text-align: center; margin-top: 3rem; padding: 1rem; font-size: 0.85rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gold Subscription</h1>
+            <p class="subtitle">🌟 Premium Data + Marketing Service</p>
+        </header>
+        
+        <div class="form-card">
+            <div class="premium">
+                <h3>What's Included</h3>
+                <ul>
+                    <li>Daily Lis Pendens data delivery</li>
+                    <li>Professional marketing letter generation</li>
+                    <li>Direct mail campaign management</li>
+                    <li>Priority support</li>
+                    <li>Custom formatting options</li>
+                </ul>
+            </div>
+            
+            <div class="note">
+                💼 Our team will contact you to discuss your specific marketing needs and provide custom pricing based on volume and counties.
+            </div>
+            
+            <!-- TODO: Connect to Google Script when Sheets access restored -->
+            <form id="goldForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company Name *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="counties">Florida Counties of Interest *</label>
+                    <input type="text" id="counties" name="counties" placeholder="e.g., All Northwest FL, or specific list..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="marketing">Marketing Campaign Volume *</label>
+                    <select id="marketing" name="marketing" required>
+                        <option value="">Estimated monthly mailings...</option>
+                        <option value="100-500">100 - 500 letters/month</option>
+                        <option value="500-1000">500 - 1,000 letters/month</option>
+                        <option value="1000-5000">1,000 - 5,000 letters/month</option>
+                        <option value="5000+">5,000+ letters/month</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="format">Preferred Data Format *</label>
+                    <select id="format" name="format" required>
+                        <option value="">Select...</option>
+                        <option value="csv">CSV</option>
+                        <option value="excel">Excel (.xlsx)</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Requirements</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Letter templates, branding requirements, special requests..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to receive SMS messages from Florida Lis Pendens. Message frequency varies. Reply STOP to opt out.
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn">Request Gold Consultation</button>
+            </form>
+        </div>
+        
+        <div class="back-link">
+            <a href="../index.html">← Back to Home</a>
+        </div>
+        
+        <footer>
+            <p>© My850 Real Estate — Florida Lis Pendens Data</p>
+            <p>Premium Service | Call (850) 998-8500</p>
+        </footer>
+    </div>
+    
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your Gold subscription request! Our team will contact you within 24 hours to discuss your premium plan.');
+        }
+    </script>
+</body>
+</html>

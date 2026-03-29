@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Owner Lis Pendens Check | Florida</title>
+    <meta name="description" content="Free property check for Florida homeowners. See if your property has a Lis Pendens filing.">
+    <style>
+        :root {
+            --navy: #1a3a5c;
+            --forest: #2d5a3d;
+            --gold: #c9a227;
+            --cream: #f8f9fa;
+            --text: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { color: var(--navy); font-size: 1.75rem; }
+        .subtitle { color: var(--forest); font-weight: 500; margin-top: 0.5rem; }
+        .form-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--navy); }
+        input, select { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
+        input:focus, select:focus { outline: none; border-color: var(--gold); }
+        .btn { background: var(--forest); color: white; padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        .back-link { text-align: center; margin-top: 1.5rem; }
+        .back-link a { color: var(--forest); }
+        .info { background: #d1ecf1; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #0c5460; border-left: 4px solid var(--navy); }
+        .info h3 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1rem; }
+        footer { text-align: center; margin-top: 3rem; padding: 1rem; font-size: 0.85rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Property Owner Check</h1>
+            <p class="subtitle">Free Lis Pendens Verification</p>
+        </header>
+        
+        <div class="form-card">
+            <div class="info">
+                <h3>🔍 What is this?</h3>
+                <p>A Lis Pendens is a legal notice filed in the public records indicating litigation affecting a property. If you're a Florida homeowner, this free check will tell you if a Lis Pendens has been filed on your property. No obligation, no cost.</p>
+            </div>
+            
+            <!-- TODO: Connect to Google Script when Sheets access restored -->
+            <form id="ownerForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Where we'll send results" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567 (optional)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="county">County Where Property is Located *</label>
+                    <select id="county" name="county" required>
+                        <option value="">Select county...</option>
+                        <option value="Alachua">Alachua</option>
+                        <option value="Baker">Baker</option>
+                        <option value="Bay">Bay</option>
+                        <option value="Bradford">Bradford</option>
+                        <option value="Brevard">Brevard</option>
+                        <option value="Broward">Broward</option>
+                        <option value="Calhoun">Calhoun</option>
+                        <option value="Charlotte">Charlotte</option>
+                        <option value="Citrus">Citrus</option>
+                        <option value="Clay">Clay</option>
+                        <option value="Collier">Collier</option>
+                        <option value="Columbia">Columbia</option>
+                        <option value="DeSoto">DeSoto</option>
+                        <option value="Dixie">Dixie</option>
+                        <option value="Duval">Duval</option>
+                        <option value="Escambia">Escambia</option>
+                        <option value="Flagler">Flagler</option>
+                        <option value="Franklin">Franklin</option>
+                        <option value="Gadsden">Gadsden</option>
+                        <option value="Gilchrist">Gilchrist</option>
+                        <option value="Glades">Glades</option>
+                        <option value="Gulf">Gulf</option>
+                        <option value="Hamilton">Hamilton</option>
+                        <option value="Hardee">Hardee</option>
+                        <option value="Hendry">Hendry</option>
+                        <option value="Hernando">Hernando</option>
+                        <option value="Highlands">Highlands</option>
+                        <option value="Hillsborough">Hillsborough</option>
+                        <option value="Holmes">Holmes</option>
+                        <option value="Indian River">Indian River</option>
+                        <option value="Jackson">Jackson</option>
+                        <option value="Jefferson">Jefferson</option>
+                        <option value="Lafayette">Lafayette</option>
+                        <option value="Lake">Lake</option>
+                        <option value="Lee">Lee</option>
+                        <option value="Leon">Leon</option>
+                        <option value="Levy">Levy</option>
+                        <option value="Liberty">Liberty</option>
+                        <option value="Madison">Madison</option>
+                        <option value="Manatee">Manatee</option>
+                        <option value="Marion">Marion</option>
+                        <option value="Martin">Martin</option>
+                        <option value="Miami-Dade">Miami-Dade</option>
+                        <option value="Monroe">Monroe</option>
+                        <option value="Nassau">Nassau</option>
+                        <option value="Okaloosa">Okaloosa</option>
+                        <option value="Okeechobee">Okeechobee</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Osceola">Osceola</option>
+                        <option value="Palm Beach">Palm Beach</option>
+                        <option value="Pasco">Pasco</option>
+                        <option value="Pinellas">Pinellas</option>
+                        <option value="Polk">Polk</option>
+                        <option value="Putnam">Putnam</option>
+                        <option value="St. Johns">St. Johns</option>
+                        <option value="St. Lucie">St. Lucie</option>
+                        <option value="Santa Rosa">Santa Rosa</option>
+                        <option value="Sarasota">Sarasota</option>
+                        <option value="Seminole">Seminole</option>
+                        <option value="Sumter">Sumter</option>
+                        <option value="Suwannee">Suwannee</option>
+                        <option value="Taylor">Taylor</option>
+                        <option value="Union">Union</option>
+                        <option value="Volusia">Volusia</option>
+                        <option value="Wakulla">Wakulla</option>
+                        <option value="Walton">Walton</option>
+                        <option value="Washington">Washington</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Property Address *</label>
+                    <input type="text" id="address" name="address" placeholder="123 Main St" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                
+                <button type="submit" class="btn">Request Free Property Check</button>
+            </form>
+        </div>
+        
+        <div class="back-link">
+            <a href="./index.html">← Back to Home</a>
+        </div>
+        
+        <footer>
+            <p>© My850 Real Estate — Florida Lis Pendens Data</p>
+            <p>Free service for Florida homeowners | Call (850) 998-8500</p>
+        </footer>
+    </div>
+    
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your request! We will check the county records and email you within 2 business days with the results.');
+        }
+    </script>
+</body>
+</html>

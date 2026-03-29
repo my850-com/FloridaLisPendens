@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Lis Pendens Data | Investors, Agents, Lenders & Owners</title>
+    <meta name="description" content="Daily and weekly Florida Lis Pendens data for real estate investors, agents, mortgage lenders, and property owners. Actionable data, prompt delivery.">
+    <meta property="og:title" content="Florida Lis Pendens Data">
+    <meta property="og:description" content="Your one-stop Florida Lis Pendens data, marketing, and information provider.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floridalispendens.com">
+    <link rel="canonical" href="https://floridalispendens.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Florida Lis Pendens Data Service",
+        "description": "Daily and weekly Florida Lis Pendens filings data for real estate professionals",
+        "provider": {
+            "@type": "Organization",
+            "name": "My850 Real Estate",
+            "telephone": "(850) 998-8500",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "4507 Furling #106",
+                "addressLocality": "Destin",
+                "addressRegion": "FL",
+                "postalCode": "32541"
+            }
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Florida"
+        }
+    }
+    </script>
+    <style>
+        :root {
+            --navy: #1a3a5c;
+            --forest: #2d5a3d;
+            --gold: #c9a227;
+            --cream: #f8f9fa;
+            --text: #333;
+            --text-light: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .tagline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Features */
+        .features {
+            background: var(--cream);
+            padding: 4rem 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--navy);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .feature-card h3 {
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        /* About */
+        .about {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        /* Subscriptions */
+        .subscriptions {
+            background: var(--navy);
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .subscriptions h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .pricing-card h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .pricing-card p {
+            margin: 1rem 0;
+            opacity: 0.9;
+        }
+        
+        .pricing-card .btn {
+            display: block;
+            width: 100%;
+            margin: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--cream);
+            padding: 5rem 0;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 3rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--gold);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-card p {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+        
+        .testimonial-card .author {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .contact p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact a {
+            color: var(--forest);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .btn-outline {
+                margin: 1rem 0 0 0;
+                display: block;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        /* Note for future: County map section placeholder */
+        .county-map-placeholder {
+            background: var(--cream);
+            padding: 4rem;
+            text-align: center;
+            border: 2px dashed #ccc;
+            margin: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Florida Lis Pendens Data</h1>
+        <p class="tagline">Your one-stop Florida Lis Pendens data, marketing, and information provider.</p>
+        <div>
+            <a href="#pricing" class="btn">Get Started</a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Actionable Data, Prompt Delivery!</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>📊 Weekly Filings</h3>
+                    <p>Comprehensive weekly Florida Lis Pendens filings delivered every Monday.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Daily Filings</h3>
+                    <p>Next-day delivery of all new Florida Lis Pendens filings.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📧 Any Format</h3>
+                    <p>CSV, Excel, JSON, or custom formats — you choose.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Custom Campaigns</h3>
+                    <p>Tailored marketing campaigns for your specific counties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2>A Trusted Resource</h2>
+            <p>In a Judicial Foreclosure state such as Florida, the first publicly recorded step of the foreclosure process is a Lis Pendens filed in the public records of the same county where the property is located.</p>
+            <p>This legal notice signals the beginning of litigation affecting title to real property. For investors, agents, lenders, and owners, accessing this data early creates opportunity.</p>
+            <p><strong>We provide fast and reliable Florida Lis Pendens filing data to real estate professionals across all 67 Florida counties.</strong></p>
+        </div>
+    </section>
+
+    <section class="subscriptions" id="pricing">
+        <div class="container">
+            <h2>Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Bronze</h3>
+                    <div class="price">Weekly Data</div>
+                    <p>Weekly Lis Pendens filings for your chosen counties.</p>
+                    <a href="./subscribe/bronze.html" class="btn">Select Bronze</a>
+                    <small style="opacity: 0.7;">Per county pricing available</small>
+                </div>
+                <div class="pricing-card">
+                    <h3>Silver</h3>
+                    <div class="price">Daily Data</div>
+                    <p>Next-day delivery of all new filings for your counties.</p>
+                    <a href="./subscribe/silver.html" class="btn">Select Silver</a>
+                    <small style="opacity: 0.7;">Per county pricing available</small>
+                </div>
+                <div class="pricing-card">
+                    <h3>Gold</h3>
+                    <div class="price">Premium</div>
+                    <p>Daily data plus marketing letter generation and mailing.</p>
+                    <a href="./subscribe/gold.html" class="btn">Select Gold</a>
+                    <small style="opacity: 0.7;">Contact for pricing</small>
+                </div>
+                <div class="pricing-card">
+                    <h3>Property Owner</h3>
+                    <div class="price">Free</div>
+                    <p>Check if your property has a Lis Pendens filing.</p>
+                    <a href="./owner-request.html" class="btn">Request Check</a>
+                    <small style="opacity: 0.7;">No obligation</small>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; opacity: 0.8;">
+                <small>By submitting any form, you agree to receive SMS messages. Reply STOP to opt out.</small>
+            </p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>My data and letters are always on time and Cierra is always able to answer any questions or make changes on the fly. Very professional service.</p>
+                    <div class="author">— Justin G.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>The data is simple and easy to work with and arrives every week. We are able to merge the data into our letters and we save a ton of time researching data.</p>
+                    <div class="author">— Robyn H.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>Great service so far and your team is very responsive. I was uncertain about the formatting and your team was very informative and walked me through the set up.</p>
+                    <div class="author">— Matt B.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p><strong>My850 Real Estate</strong></p>
+            <p>📞 <a href="tel:+18509988500">(850) 998-8500</a></p>
+            <p>📍 4507 Furling #106, Destin, FL 32541</p>
+            <p style="margin-top: 1rem;">Strategic Solutions, Real Results</p>
+        </div>
+    </section>
+
+    <!-- Placeholder for future county map section -->
+    <section class="county-map-placeholder" style="display: none;">
+        <h3>Interactive Florida County Map</h3>
+        <p>Lis Pendens filings data for all 67 Florida counties will appear here.</p>
+        <p><em>Integrates with Google Sheets for live data.</em></p>
+    </section>
+
+    <footer>
+        <p>© My850 Real Estate - All Rights Reserved.</p>
+        <p>Florida Lis Pendens Data Service</p>
+    </footer>
+</body>
+</html>
