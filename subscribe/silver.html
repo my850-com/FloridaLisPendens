@@ -4,82 +4,352 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silver Subscription | Florida Lis Pendens</title>
-    <meta name="description" content="Daily Florida Lis Pendens data subscription. Next-day delivery of all new filings for your chosen counties.">
+    <meta name="description" content="Daily Florida Lis Pendens data subscription with next-day delivery. 4-step signup.">
     <style>
         :root {
             --navy: #1a3a5c;
-            --forest: #2d5a3d;
             --gold: #c9a227;
-            --cream: #f8f9fa;
-            --text: #333;
+            --cream: #fafbfc;
+            --white: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --success: #48bb78;
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; padding: 2rem; }
-        header { text-align: center; margin-bottom: 2rem; }
-        h1 { color: var(--navy); font-size: 1.75rem; }
-        .subtitle { color: var(--gold); font-weight: 600; margin-top: 0.5rem; }
-        .form-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--navy); }
-        input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
-        .btn { background: var(--gold); color: var(--navy); padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.9; }
-        .back-link { text-align: center; margin-top: 1.5rem; }
-        .back-link a { color: var(--forest); }
-        .note { background: #d4edda; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #155724; }
-        .highlight { background: var(--navy); color: white; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; }
-        .highlight h3 { color: var(--gold); margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .highlight p { margin: 0; font-size: 0.9rem; }
-        footer { text-align: center; margin-top: 3rem; padding: 1rem; font-size: 0.85rem; color: #666; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: var(--cream); 
+            color: var(--text); 
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            padding: 2rem 1rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s;
+        }
+        
+        .progress-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+        
+        .progress-dot.completed {
+            background: var(--navy);
+        }
+        
+        .step-indicator {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.375rem;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+        }
+        
+        .btn {
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        .btn-primary:hover {
+            background: #b89420;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--cream);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-back {
+            flex: 1;
+        }
+        
+        .btn-next {
+            flex: 2;
+        }
+        
+        .step {
+            display: none;
+        }
+        
+        .step.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .review-item {
+            padding: 0.75rem;
+            background: var(--cream);
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+        }
+        
+        .review-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .review-value {
+            font-weight: 500;
+            color: var(--navy);
+        }
+        
+        .checkbox-group {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.2rem;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message h2 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-message p {
+            color: var(--text-light);
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .back-link a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .back-link a:hover {
+            color: var(--navy);
+        }
+        
+        .pricing-info {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbe6 100%);
+            border-radius: 8px;
+            border: 1px solid #f0e68c;
+        }
+        
+        .pricing-info .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .pricing-info .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: var(--navy);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .highlight-box p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
+    <input type="hidden" id="formType" value="Silver">
+    
     <div class="container">
-        <header>
-            <h1>Silver Subscription</h1>
-            <p class="subtitle">Daily Lis Pendens Data Delivery</p>
-        </header>
+        <div class="header">
+            <div class="logo">Florida Lis Pendens</div>
+            <div class="tagline">✨ Silver Subscription</div>
+        </div>
+        
+        <div class="step-indicator">
+            Step <span id="currentStep">1</span> of 4
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-dot active" id="dot1"></div>
+            <div class="progress-dot" id="dot2"></div>
+            <div class="progress-dot" id="dot3"></div>
+            <div class="progress-dot" id="dot4"></div>
+        </div>
         
         <div class="form-card">
-            <div class="highlight">
-                <h3>⚡ Daily Delivery</h3>
-                <p>Receive fresh Lis Pendens filings next-day. Stay ahead of the competition with same-day data access.</p>
+            <!-- Step 1: Contact Info -->
+            <div class="step active" id="step1">
+                <h2 class="step-title">Your Contact Info</h2>
+                
+                <div class="form-group">
+                    <label for="step1-name">Full Name *</label>
+                    <input type="text" id="step1-name" placeholder="John Smith" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="step1-email">Email Address *</label>
+                    <input type="email" id="step1-email" placeholder="you@example.com" required>
+                </div>
+                
+                <button class="btn btn-primary" onclick="nextStep(2)">Next Step →</button>
             </div>
             
-            <div class="note">
-                📧 Next-day delivery of all new Florida Lis Pendens filings for your counties. Data sent in your preferred format every weekday.
-            </div>
-            
-            <!-- TODO: Connect to Google Script when Sheets access restored -->
-            <form id="silverForm" onsubmit="handleSubmit(event)">
-                <input type="hidden" id="formType" name="formType" value="Silver">
+            <!-- Step 2: Business Details -->
+            <div class="step" id="step2">
+                <h2 class="step-title">Business Details</h2>
+                
                 <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="step2-phone">Phone Number *</label>
+                    <input type="tel" id="step2-phone" placeholder="(850) 123-4567" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="counties">Florida Counties of Interest *</label>
-                    <input type="text" id="counties" name="counties" placeholder="e.g., Okaloosa, Walton, Bay, Santa Rosa" required>
-                    <small style="color: #666;">Enter one or more Florida counties</small>
-                </div>
-                
-                <div class="form-group">
-                    <label for="business">Business Type *</label>
-                    <select id="business" name="business" required>
-                        <option value="">Select...</option>
+                    <label for="step2-business">Business Type *</label>
+                    <select id="step2-business" required>
+                        <option value="">Select your business type...</option>
                         <option value="real-estate-investor">Real Estate Investor</option>
                         <option value="agent-broker">Real Estate Agent/Broker</option>
                         <option value="mortgage-lender">Mortgage Lender</option>
@@ -89,46 +359,202 @@
                     </select>
                 </div>
                 
+                <div class="button-group">
+                    <button class="btn btn-secondary btn-back" onclick="prevStep(1)">← Back</button>
+                    <button class="btn btn-primary btn-next" onclick="nextStep(3)">Next Step →</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Data Preferences -->
+            <div class="step" id="step3">
+                <h2 class="step-title">Data Preferences</h2>
+                
+                <div class="highlight-box">
+                    <h3>⚡ Daily Delivery</h3>
+                    <p>Next-day delivery every weekday • Fresh data within 24 hours</p>
+                </div>
+                
                 <div class="form-group">
-                    <label for="format">Preferred Data Format *</label>
-                    <select id="format" name="format" required>
-                        <option value="">Select...</option>
-                        <option value="csv">CSV</option>
+                    <label for="step3-counties">Florida Counties *</label>
+                    <input type="text" id="step3-counties" placeholder="e.g., Broward, Palm Beach, Miami-Dade" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="step3-format">Data Format *</label>
+                    <select id="step3-format" required>
+                        <option value="">Choose format...</option>
+                        <option value="csv">CSV (comma-separated)</option>
                         <option value="excel">Excel (.xlsx)</option>
                         <option value="json">JSON</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="notes">Additional Notes</label>
-                    <textarea id="notes" name="notes" rows="3" placeholder="Any specific requirements or questions..."></textarea>
+                    <label for="step3-notes">Additional Notes</label>
+                    <textarea id="step3-notes" rows="3" placeholder="Any specific requirements or questions..."></textarea>
                 </div>
                 
-                <div class="form-group">
+                <div class="pricing-info">
+                    <div class="price">$79/month</div>
+                    <div class="period">per county • Daily delivery</div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary btn-back" onclick="prevStep(2)">← Back</button>
+                    <button class="btn btn-primary btn-next" onclick="nextStep(4)">Review →</button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Review & Submit -->
+            <div class="step" id="step4">
+                <h2 class="step-title">Review Your Request</h2>
+                
+                <div class="review-item">
+                    <div class="review-label">Name</div>
+                    <div class="review-value" id="review-name"></div>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-label">Email</div>
+                    <div class="review-value" id="review-email"></div>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-label">Phone</div>
+                    <div class="review-value" id="review-phone"></div>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-label">Business Type</div>
+                    <div class="review-value" id="review-business"></div>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-label">Counties</div>
+                    <div class="review-value" id="review-counties"></div>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-label">Format</div>
+                    <div class="review-value" id="review-format"></div>
+                </div>
+                
+                <div class="review-item" id="review-notes-item" style="display: none;">
+                    <div class="review-label">Notes</div>
+                    <div class="review-value" id="review-notes"></div>
+                </div>
+                
+                <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" required>
-                        I agree to receive SMS messages from Florida Lis Pendens. Message frequency varies. Reply STOP to opt out.
+                        <input type="checkbox" id="consent" required>
+                        <span>I agree to receive SMS messages from Florida Lis Pendens. Reply STOP to opt out. Message and data rates may apply.</span>
                     </label>
                 </div>
                 
-                <button type="submit" class="btn">Submit Silver Subscription</button>
-            </form>
+                <div class="button-group">
+                    <button class="btn btn-secondary btn-back" onclick="prevStep(3)">← Back</button>
+                    <button class="btn btn-primary btn-next" onclick="submitForm()">Submit Request</button>
+                </div>
+            </div>
+            
+            <!-- Success -->
+            <div class="step" id="step5">
+                <div class="success-message">
+                    <div class="success-icon">⚡</div>
+                    <h2>Thank You!</h2>
+                    <p>Your Silver subscription request has been submitted. You'll receive next-day delivery of all Lis Pendens filings starting as soon as your account is activated.</p>
+                    <br>
+                    <a href="../index.html" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
         </div>
         
         <div class="back-link">
             <a href="../index.html">← Back to Home</a>
         </div>
-        
-        <footer>
-            <p>© My850 Real Estate — Florida Lis Pendens Data</p>
-            <p>Questions? Call (850) 998-8500</p>
-        </footer>
     </div>
     
     <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('Thank you for your Silver subscription request! Our team will contact you shortly to confirm your daily data plan.');
+        let currentStepNumber = 1;
+        
+        function nextStep(step) {
+            if (step === 2) {
+                if (!document.getElementById('step1-name').value || !document.getElementById('step1-email').value) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+            } else if (step === 3) {
+                if (!document.getElementById('step2-phone').value || !document.getElementById('step2-business').value) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+            } else if (step === 4) {
+                if (!document.getElementById('step3-counties').value || !document.getElementById('step3-format').value) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                populateReview();
+            }
+            
+            document.getElementById('step' + currentStepNumber).classList.remove('active');
+            document.getElementById('dot' + currentStepNumber).classList.remove('active');
+            document.getElementById('dot' + currentStepNumber).classList.add('completed');
+            
+            currentStepNumber = step;
+            document.getElementById('step' + step).classList.add('active');
+            document.getElementById('dot' + step).classList.add('active');
+            document.getElementById('currentStep').textContent = step === 5 ? '4' : step;
+        }
+        
+        function prevStep(step) {
+            document.getElementById('step' + currentStepNumber).classList.remove('active');
+            document.getElementById('dot' + currentStepNumber).classList.remove('active');
+            
+            currentStepNumber = step;
+            document.getElementById('step' + step).classList.add('active');
+            document.getElementById('dot' + step).classList.remove('completed');
+            document.getElementById('dot' + step).classList.add('active');
+            document.getElementById('currentStep').textContent = step;
+        }
+        
+        function populateReview() {
+            document.getElementById('review-name').textContent = document.getElementById('step1-name').value;
+            document.getElementById('review-email').textContent = document.getElementById('step1-email').value;
+            document.getElementById('review-phone').textContent = document.getElementById('step2-phone').value;
+            document.getElementById('review-business').textContent = document.getElementById('step2-business').value;
+            document.getElementById('review-counties').textContent = document.getElementById('step3-counties').value;
+            document.getElementById('review-format').textContent = document.getElementById('step3-format').value;
+            
+            const notes = document.getElementById('step3-notes').value;
+            if (notes) {
+                document.getElementById('review-notes').textContent = notes;
+                document.getElementById('review-notes-item').style.display = 'block';
+            }
+        }
+        
+        function submitForm() {
+            if (!document.getElementById('consent').checked) {
+                alert('Please agree to receive SMS messages');
+                return;
+            }
+            
+            const formData = {
+                formType: 'Silver',
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('step1-name').value,
+                email: document.getElementById('step1-email').value,
+                phone: document.getElementById('step2-phone').value,
+                business: document.getElementById('step2-business').value,
+                counties: document.getElementById('step3-counties').value,
+                dataFormat: document.getElementById('step3-format').value,
+                marketingVolume: '',
+                propertyCounty: '',
+                notes: document.getElementById('step3-notes').value,
+                status: 'New'
+            };
+            
+            console.log('Silver Form Data:', formData);
+            nextStep(5);
         }
     </script>
 </body>
