@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silver Subscription | Florida Lis Pendens</title>
-    <meta name="description" content="Daily Florida Lis Pendens data subscription. Next-day delivery of all new filings for your chosen counties.">
+    <title>Data Count Request | Florida Lis Pendens</title>
+    <meta name="description" content="Get a quick count of Lis Pendens filings in your Florida counties. Free data count estimate.">
     <style>
         :root {
             --navy: #1a3a5c;
@@ -24,37 +24,39 @@
         label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--navy); }
         input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
-        .btn { background: var(--gold); color: var(--navy); padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
+        .btn { background: var(--navy); color: white; padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
         .back-link { text-align: center; margin-top: 1.5rem; }
         .back-link a { color: var(--forest); }
-        .note { background: #d4edda; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #155724; }
-        .highlight { background: var(--navy); color: white; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; }
-        .highlight h3 { color: var(--gold); margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .highlight p { margin: 0; font-size: 0.9rem; }
+        .highlight { background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%); color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        .highlight h3 { color: var(--gold); margin-bottom: 0.75rem; }
+        .highlight ul { margin-left: 1.25rem; }
+        .highlight li { margin-bottom: 0.5rem; }
         footer { text-align: center; margin-top: 3rem; padding: 1rem; font-size: 0.85rem; color: #666; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Silver Subscription</h1>
-            <p class="subtitle">Daily Lis Pendens Data Delivery</p>
+            <h1>Data Count Request</h1>
+            <p class="subtitle">Get Your Free Filing Count</p>
         </header>
         
         <div class="form-card">
             <div class="highlight">
-                <h3>⚡ Daily Delivery</h3>
-                <p>Receive fresh Lis Pendens filings next-day. Stay ahead of the competition with same-day data access.</p>
+                <h3>📊 What's Included</h3>
+                <ul>
+                    <li>Weekly Lis Pendens filing counts per county</li>
+                    <li>Last 30 days of historical data</li>
+                    <li>Major cities breakdown</li>
+                    <li>Market comparison insights</li>
+                    <li>No obligation, no cost</li>
+                </ul>
             </div>
             
-            <div class="note">
-                📧 Next-day delivery of all new Florida Lis Pendens filings for your counties. Data sent in your preferred format every weekday.
-            </div>
-            
-            <!-- TODO: Connect to Google Script when Sheets access restored -->
-            <form id="silverForm" onsubmit="handleSubmit(event)">
-                <input type="hidden" id="formType" name="formType" value="Silver">
+            <form id="dataCountForm" onsubmit="handleSubmit(event)">
+                <input type="hidden" id="formType" name="formType" value="DataCount">
+                
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -66,19 +68,13 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567">
                 </div>
                 
                 <div class="form-group">
-                    <label for="counties">Florida Counties of Interest *</label>
-                    <input type="text" id="counties" name="counties" placeholder="e.g., Okaloosa, Walton, Bay, Santa Rosa" required>
-                    <small style="color: #666;">Enter one or more Florida counties</small>
-                </div>
-                
-                <div class="form-group">
-                    <label for="business">Business Type *</label>
-                    <select id="business" name="business" required>
+                    <label for="business">Business Type</label>
+                    <select id="business" name="business">
                         <option value="">Select...</option>
                         <option value="real-estate-investor">Real Estate Investor</option>
                         <option value="agent-broker">Real Estate Agent/Broker</option>
@@ -90,28 +86,24 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="format">Preferred Data Format *</label>
-                    <select id="format" name="format" required>
-                        <option value="">Select...</option>
-                        <option value="csv">CSV</option>
-                        <option value="excel">Excel (.xlsx)</option>
-                        <option value="json">JSON</option>
-                    </select>
+                    <label for="counties">Florida Counties of Interest *</label>
+                    <input type="text" id="counties" name="counties" placeholder="e.g., Broward, Palm Beach, Miami-Dade" required>
+                    <small style="color: #666;">Enter one or more Florida counties</small>
                 </div>
                 
                 <div class="form-group">
                     <label for="notes">Additional Notes</label>
-                    <textarea id="notes" name="notes" rows="3" placeholder="Any specific requirements or questions..."></textarea>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Any specific questions or requirements..."></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label>
                         <input type="checkbox" required>
-                        I agree to receive SMS messages from Florida Lis Pendens. Message frequency varies. Reply STOP to opt out.
+                        I agree to receive emails/SMS about Lis Pendens data counts. Reply STOP to opt out.
                     </label>
                 </div>
                 
-                <button type="submit" class="btn">Submit Silver Subscription</button>
+                <button type="submit" class="btn">Get My Data Count</button>
             </form>
         </div>
         
@@ -128,7 +120,24 @@
     <script>
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you for your Silver subscription request! Our team will contact you shortly to confirm your daily data plan.');
+            
+            const formData = {
+                formType: 'DataCount',
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value || '',
+                business: document.getElementById('business').value || '',
+                counties: document.getElementById('counties').value,
+                dataFormat: '',
+                marketingVolume: '',
+                propertyCounty: '',
+                notes: document.getElementById('notes').value,
+                status: 'New'
+            };
+            
+            console.log('Form Data:', formData);
+            alert('Thank you for your request! We will email your data count within 24 hours.');
         }
     </script>
 </body>

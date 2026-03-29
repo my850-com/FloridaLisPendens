@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bronze Subscription | Florida Lis Pendens</title>
-    <meta name="description" content="Weekly Florida Lis Pendens data subscription. Receive weekly filings for your chosen counties.">
+    <title>Contact Us | Florida Lis Pendens</title>
+    <meta name="description" content="Get in touch with Florida Lis Pendens Data. Questions, support, or custom inquiries.">
     <style>
         :root {
             --navy: #1a3a5c;
@@ -24,28 +24,28 @@
         label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--navy); }
         input, select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
-        .btn { background: var(--gold); color: var(--navy); padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
+        .btn { background: var(--forest); color: white; padding: 1rem; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
         .back-link { text-align: center; margin-top: 1.5rem; }
         .back-link a { color: var(--forest); }
-        .note { background: #fff3cd; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #856404; }
+        .note { background: #d4edda; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #155724; border-left: 4px solid var(--gold); }
         footer { text-align: center; margin-top: 3rem; padding: 1rem; font-size: 0.85rem; color: #666; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Bronze Subscription</h1>
-            <p class="subtitle">Weekly Lis Pendens Data Delivery</p>
+            <h1>Contact Us</h1>
+            <p class="subtitle">Questions? We're here to help.</p>
         </header>
         
         <div class="form-card">
             <div class="note">
-                💡 You'll receive weekly Lis Pendens filings every Monday for your selected counties. Data delivered in your preferred format (CSV, Excel, or JSON).
+                💬 Have questions about our data services? Need custom data options? Fill out the form below and our team will respond within 24 hours.
             </div>
             
-            <form id="bronzeForm" onsubmit="handleSubmit(event)">
-                <input type="hidden" id="formType" name="formType" value="Bronze">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <input type="hidden" id="formType" name="formType" value="Contact">
                 
                 <div class="form-group">
                     <label for="name">Full Name *</label>
@@ -58,47 +58,30 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(850) 123-4567">
                 </div>
                 
                 <div class="form-group">
-                    <label for="counties">Florida Counties of Interest *</label>
-                    <input type="text" id="counties" name="counties" placeholder="e.g., Okaloosa, Walton, Bay" required>
-                    <small style="color: #666;">Enter one or more Florida counties</small>
-                </div>
-                
-                <div class="form-group">
-                    <label for="business">Business Type *</label>
-                    <select id="business" name="business" required>
+                    <label for="business">Business Type</label>
+                    <select id="business" name="business">
                         <option value="">Select...</option>
                         <option value="real-estate-investor">Real Estate Investor</option>
                         <option value="agent-broker">Real Estate Agent/Broker</option>
                         <option value="mortgage-lender">Mortgage Lender</option>
                         <option value="title-company">Title Company</option>
                         <option value="attorney">Attorney</option>
+                        <option value="homeowner">Homeowner</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="format">Preferred Data Format *</label>
-                    <select id="format" name="format" required>
-                        <option value="">Select...</option>
-                        <option value="csv">CSV</option>
-                        <option value="excel">Excel (.xlsx)</option>
-                        <option value="json">JSON</option>
-                    </select>
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" required>
-                        I agree to receive SMS messages from Florida Lis Pendens. Message frequency varies. Reply STOP to opt out.
-                    </label>
-                </div>
-                
-                <button type="submit" class="btn">Submit Bronze Subscription</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
         
@@ -107,8 +90,8 @@
         </div>
         
         <footer>
+            <p>📞 (850) 998-8500 | 📧 lars@my850.com</p>
             <p>© My850 Real Estate — Florida Lis Pendens Data</p>
-            <p>Questions? Call (850) 998-8500</p>
         </footer>
     </div>
     
@@ -117,25 +100,29 @@
             e.preventDefault();
             
             const formData = {
-                formType: 'Bronze',
+                formType: 'Contact',
                 timestamp: new Date().toISOString(),
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                business: document.getElementById('business').value,
-                counties: document.getElementById('counties').value,
-                dataFormat: document.getElementById('format').value,
+                phone: document.getElementById('phone').value || '',
+                business: document.getElementById('business').value || '',
+                counties: '',
+                dataFormat: '',
                 marketingVolume: '',
                 propertyCounty: '',
-                notes: '',
+                notes: document.getElementById('message').value,
                 status: 'New'
             };
             
-            console.log('Bronze Form Data:', formData);
-            alert('Thank you for your Bronze subscription request! Our team will contact you shortly to confirm your plan.');
+            // TODO: POST to Google Apps Script when script URL configured
+            console.log('Form Data:', formData);
+            alert('Thank you for your message! Our team will respond within 24 hours.');
             
-            // TODO: Replace with Google Script POST when script URL configured
-            // fetch('YOUR_GOOGLE_SCRIPT_URL', { method: 'POST', body: JSON.stringify(formData) });
+            // TODO: Replace with actual Google Script fetch when ready
+            // fetch('YOUR_GOOGLE_SCRIPT_URL', {
+            //     method: 'POST',
+            //     body: JSON.stringify(formData)
+            // });
         }
     </script>
 </body>

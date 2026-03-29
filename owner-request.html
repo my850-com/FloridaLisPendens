@@ -48,6 +48,7 @@
             
             <!-- TODO: Connect to Google Script when Sheets access restored -->
             <form id="ownerForm" onsubmit="handleSubmit(event)">
+                <input type="hidden" id="formType" name="formType" value="Consumer">
                 <div class="form-group">
                     <label for="name">Your Name *</label>
                     <input type="text" id="name" name="name" required>
