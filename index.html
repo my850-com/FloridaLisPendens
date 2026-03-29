@@ -1,495 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florida Lis Pendens Data | Investors, Agents, Lenders & Owners</title>
-    <meta name="description" content="Daily and weekly Florida Lis Pendens data for real estate investors, agents, mortgage lenders, and property owners. Actionable data, prompt delivery.">
-    <meta property="og:title" content="Florida Lis Pendens Data">
-    <meta property="og:description" content="Your one-stop Florida Lis Pendens data, marketing, and information provider.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floridalispendens.com">
-    <link rel="canonical" href="https://floridalispendens.com">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Florida Lis Pendens Data Service",
-        "description": "Daily and weekly Florida Lis Pendens filings data for real estate professionals",
-        "provider": {
-            "@type": "Organization",
-            "name": "My850 Real Estate",
-            "telephone": "(850) 998-8500",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "4507 Furling #106",
-                "addressLocality": "Destin",
-                "addressRegion": "FL",
-                "postalCode": "32541"
-            }
-        },
-        "areaServed": {
-            "@type": "State",
-            "name": "Florida"
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloridaLisPendens | Lis Pendens Data for Investors, Agents & Lenders</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f2f5;
     }
-    </script>
-    <style>
-        :root {
-            --navy: #1a3a5c;
-            --forest: #2d5a3d;
-            --gold: #c9a227;
-            --cream: #f8f9fa;
-            --text: #333;
-            --text-light: #666;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-        }
-        
-        /* Navigation */
-        nav {
-            background: var(--navy);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: var(--gold);
-        }
-        
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero .tagline {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: var(--gold);
-            color: var(--navy);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            margin-left: 1rem;
-        }
-        
-        .btn-outline:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        /* Features */
-        .features {
-            background: var(--cream);
-            padding: 4rem 0;
-        }
-        
-        .features h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--navy);
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .feature-card h3 {
-            color: var(--gold);
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-        
-        /* About */
-        .about {
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .about h2 {
-            font-size: 2rem;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-        
-        .about p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        /* Subscriptions */
-        .subscriptions {
-            background: var(--navy);
-            color: white;
-            padding: 5rem 0;
-        }
-        
-        .subscriptions h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--gold);
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .pricing-card {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .pricing-card h3 {
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-        
-        .pricing-card .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-        
-        .pricing-card p {
-            margin: 1rem 0;
-            opacity: 0.9;
-        }
-        
-        .pricing-card .btn {
-            display: block;
-            width: 100%;
-            margin: 0;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            background: var(--cream);
-            padding: 5rem 0;
-        }
-        
-        .testimonials h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--navy);
-            margin-bottom: 3rem;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            font-style: italic;
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            font-size: 4rem;
-            color: var(--gold);
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            font-family: Georgia, serif;
-        }
-        
-        .testimonial-card p {
-            margin-bottom: 1rem;
-            padding-left: 1rem;
-        }
-        
-        .testimonial-card .author {
-            font-style: normal;
-            font-weight: 600;
-            color: var(--navy);
-        }
-        
-        /* Contact */
-        .contact {
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-        
-        .contact p {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .contact a {
-            color: var(--forest);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--navy);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        footer p {
-            opacity: 0.8;
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .btn-outline {
-                margin: 1rem 0 0 0;
-                display: block;
-            }
-            
-            .hero {
-                padding: 3rem 1.5rem;
-            }
-        }
-        
-        /* Note for future: County map section placeholder */
-        .county-map-placeholder {
-            background: var(--cream);
-            padding: 4rem;
-            text-align: center;
-            border: 2px dashed #ccc;
-            margin: 2rem;
-        }
-    </style>
+    
+    /* Header/Nav */
+    .header {
+      background: #1a3a5c;
+      padding: 15px 0;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: #c9a227;
+    }
+    
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+    
+    .nav-menu a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-menu a:hover {
+      color: #fff;
+    }
+    
+    .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .dropdown::after {
+      content: '▼';
+      font-size: 0.6rem;
+      margin-left: 5px;
+    }
+    
+    .nav-btn {
+      background: #c9a227;
+      color: #1a3a5c;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    
+    .nav-btn:hover {
+      background: #b89420;
+    }
+    
+    /* Hero */
+    .hero {
+      background: #1a3a5c;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #c9a227;
+      margin-bottom: 15px;
+    }
+    
+    .hero p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .btn-pricing {
+      background: #c9a227;
+      color: #1a3a5c;
+      padding: 14px 35px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 14px 35px;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-outline:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+    
+    /* Counties Section */
+    .counties-section {
+      background: #FFD4B3;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .counties-section h2 {
+      font-size: 1.8rem;
+      color: #1a3a5c;
+      margin-bottom: 10px;
+    }
+    
+    .counties-section p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+    
+    /* Florida Map Placeholder */
+    .florida-map {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 400px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed rgba(26,58,92,0.2);
+    }
+    
+    .florida-map-text {
+      color: #1a3a5c;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    
+    .florida-map-text small {
+      display: block;
+      margin-top: 10px;
+      color: #666;
+    }
+    
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+      }
+      
+      .btn-pricing, .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="home">
-        <h1>Florida Lis Pendens Data</h1>
-        <p class="tagline">Your one-stop Florida Lis Pendens data, marketing, and information provider.</p>
-        <div>
-            <a href="#pricing" class="btn">Get Started</a>
-            <a href="#about" class="btn btn-outline">Learn More</a>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2>Actionable Data, Prompt Delivery!</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>📊 Weekly Filings</h3>
-                    <p>Comprehensive weekly Florida Lis Pendens filings delivered every Monday.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>⚡ Daily Filings</h3>
-                    <p>Next-day delivery of all new Florida Lis Pendens filings.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📧 Any Format</h3>
-                    <p>CSV, Excel, JSON, or custom formats — you choose.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎯 Custom Campaigns</h3>
-                    <p>Tailored marketing campaigns for your specific counties.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <h2>A Trusted Resource</h2>
-            <p>In a Judicial Foreclosure state such as Florida, the first publicly recorded step of the foreclosure process is a Lis Pendens filed in the public records of the same county where the property is located.</p>
-            <p>This legal notice signals the beginning of litigation affecting title to real property. For investors, agents, lenders, and owners, accessing this data early creates opportunity.</p>
-            <p><strong>We provide fast and reliable Florida Lis Pendens filing data to real estate professionals across all 67 Florida counties.</strong></p>
-        </div>
-    </section>
-
-    <section class="subscriptions" id="pricing">
-        <div class="container">
-            <h2>Choose Your Plan</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Bronze</h3>
-                    <div class="price">Weekly Data</div>
-                    <p>Weekly Lis Pendens filings for your chosen counties.</p>
-                    <a href="./subscribe/bronze.html" class="btn">Select Bronze</a>
-                    <small style="opacity: 0.7;">Per county pricing available</small>
-                </div>
-                <div class="pricing-card">
-                    <h3>Silver</h3>
-                    <div class="price">Daily Data</div>
-                    <p>Next-day delivery of all new filings for your counties.</p>
-                    <a href="./subscribe/silver.html" class="btn">Select Silver</a>
-                    <small style="opacity: 0.7;">Per county pricing available</small>
-                </div>
-                <div class="pricing-card">
-                    <h3>Gold</h3>
-                    <div class="price">Premium</div>
-                    <p>Daily data plus marketing letter generation and mailing.</p>
-                    <a href="./subscribe/gold.html" class="btn">Select Gold</a>
-                    <small style="opacity: 0.7;">Contact for pricing</small>
-                </div>
-                <div class="pricing-card">
-                    <h3>Property Owner</h3>
-                    <div class="price">Free</div>
-                    <p>Check if your property has a Lis Pendens filing.</p>
-                    <a href="./owner-request.html" class="btn">Request Check</a>
-                    <small style="opacity: 0.7;">No obligation</small>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 2rem; opacity: 0.8;">
-                <small>By submitting any form, you agree to receive SMS messages. Reply STOP to opt out.</small>
-            </p>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>My data and letters are always on time and Cierra is always able to answer any questions or make changes on the fly. Very professional service.</p>
-                    <div class="author">— Justin G.</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>The data is simple and easy to work with and arrives every week. We are able to merge the data into our letters and we save a ton of time researching data.</p>
-                    <div class="author">— Robyn H.</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>Great service so far and your team is very responsive. I was uncertain about the formatting and your team was very informative and walked me through the set up.</p>
-                    <div class="author">— Matt B.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p><strong>My850 Real Estate</strong></p>
-            <p>📞 <a href="tel:+18509988500">(850) 998-8500</a></p>
-            <p>📍 4507 Furling #106, Destin, FL 32541</p>
-            <p style="margin-top: 1rem;">Strategic Solutions, Real Results</p>
-        </div>
-    </section>
-
-    <!-- Placeholder for future county map section -->
-    <section class="county-map-placeholder" style="display: none;">
-        <h3>Interactive Florida County Map</h3>
-        <p>Lis Pendens filings data for all 67 Florida counties will appear here.</p>
-        <p><em>Integrates with Google Sheets for live data.</em></p>
-    </section>
-
-    <footer>
-        <p>© My850 Real Estate - All Rights Reserved.</p>
-        <p>Florida Lis Pendens Data Service</p>
-    </footer>
+  <!-- Header/Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="./" class="logo">Florida<span>LisPendens</span></a>
+      
+      <ul class="nav-menu">
+        <li><a href="./">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li class="dropdown"><a href="#">Counties</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+      
+      <a href="./data-count.html" class="nav-btn">Request Data Count</a>
+    </div>
+  </header>
+  
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Lis Pendens Marketing Data</h1>
+    <p>Lis Pendens data delivered to investors, agents, and lenders.</p>
+    <p>Fresh data from your county daily or weekly. Custom plans available.</p>
+    
+    <div class="hero-buttons">
+      <a href="./subscribe/bronze.html" class="btn-pricing">See Pricing</a>
+      <a href="./data-count.html" class="btn-outline">Request Data Count</a>
+    </div>
+  </section>
+  
+  <!-- Counties Section -->
+  <section class="counties-section">
+    <h2>67 Counties Covered</h2>
+    <p>Click any county on the map to view filings.</p>
+    
+    <div class="florida-map">
+      <div class="florida-map-text">
+        🗺️ Interactive Florida County Map
+        <small>(Coming soon - for now, request a data count for any Florida county)</small>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
